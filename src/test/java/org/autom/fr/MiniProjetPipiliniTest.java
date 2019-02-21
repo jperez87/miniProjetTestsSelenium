@@ -27,30 +27,26 @@ public class MiniProjetPipiliniTest {
 	public void monBefore() {	
 
 		String os = System.getProperty("os.name").toLowerCase();
-		if (os.contains("win")){
-			if (TUT.equals("chrome")) {
-				System.setProperty("driver.chrome.driver", "C:\\Users\\formation\\Desktop\\SUT\\chromedriver.exe");
-				driver = new ChromeDriver();
-
-			}
-			else if(TUT.equals("firefox")) {
-				System.setProperty("driver.gecko.driver", "C:\\Users\\formation\\Desktop\\SUT\\geckodriver.exe");
-				driver = new FirefoxDriver();
-
-			};		
+		if (os.contains("win") && TUT.equals("chrome")) {
+			System.setProperty("driver.chrome.driver", "C:\\Users\\formation\\Desktop\\SUT\\chromedriver.exe");
+			driver = new ChromeDriver();
+			System.err.println(os);
+		}
+		else if(os.contains("win") && TUT.equals("firefox")) {
+			System.setProperty("driver.gecko.driver", "C:\\Users\\formation\\Desktop\\SUT\\geckodriver.exe");
+			driver = new FirefoxDriver();
+			System.err.println(os);
 		}
 
-		else if (os.contains("nix") || os.contains("aix") || os.contains("nux")){
-			if (TUT.equals("chrome")) {
-				System.setProperty("driver.chrome.driver", "/home/ubuntu/SUT/chromedriver");
-				driver = new ChromeDriver();
-
-			}
-			else if(TUT.equals("firefox")) {
-				System.setProperty("driver.gecko.driver", "/home/ubuntu/SUT/geckodriver");
-				driver = new FirefoxDriver();
-
-			};			
+		else if ((os.contains("nix") || os.contains("aix") || os.contains("nux")) && TUT.equals("chrome")) {
+			System.setProperty("driver.chrome.driver", "/home/ubuntu/SUT/chromedriver");
+			driver = new ChromeDriver();
+			System.err.println(os);
+		}
+		else if((os.contains("nix") || os.contains("aix") || os.contains("nux")) && TUT.equals("firefox")) {
+			System.setProperty("driver.gecko.driver", "/home/ubuntu/SUT/geckodriver");
+			driver = new FirefoxDriver();
+			System.err.println(os);
 		}
 
 
