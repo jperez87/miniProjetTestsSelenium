@@ -26,16 +26,34 @@ public class MiniProjetPipiliniTest {
 	@Before
 	public void monBefore() {	
 
-		if (TUT.equals("chrome")) {
-			System.setProperty("driver.chrome.driver", "C:\\Users\\formation\\Desktop\\SUT\\chromedriver.exe");
-			driver = new ChromeDriver();
+		String os = System.getProperty("os.name").toLowerCase();
+		if (os.contains("win")){
+			if (TUT.equals("chrome")) {
+				System.setProperty("driver.chrome.driver", "C:\\Users\\formation\\Desktop\\SUT\\chromedriver.exe");
+				driver = new ChromeDriver();
 
+			}
+			else if(TUT.equals("firefox")) {
+				System.setProperty("driver.gecko.driver", "C:\\Users\\formation\\Desktop\\SUT\\geckodriver.exe");
+				driver = new FirefoxDriver();
+
+			};		
 		}
-		else if(TUT.equals("firefox")) {
-			System.setProperty("driver.gecko.driver", "C:\\Users\\formation\\Desktop\\SUT\\geckodriver.exe");
-			driver = new FirefoxDriver();
 
-		};
+		else if (os.contains("nix") || os.contains("aix") || os.contains("nux")){
+			if (TUT.equals("chrome")) {
+				System.setProperty("driver.chrome.driver", "/home/ubuntu/SUT/chromedriver");
+				driver = new ChromeDriver();
+
+			}
+			else if(TUT.equals("firefox")) {
+				System.setProperty("driver.gecko.driver", "/home/ubuntu/SUT/geckodriver");
+				driver = new FirefoxDriver();
+
+			};			
+		}
+
+
 
 		driver.get("http://192.168.102.184:9876/squash/");
 		//PageFactory.initElements(driver, PageConnection.class);
