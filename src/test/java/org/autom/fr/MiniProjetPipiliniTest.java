@@ -39,12 +39,12 @@ public class MiniProjetPipiliniTest {
 		}
 
 		else if ((os.contains("nix") || os.contains("aix") || os.contains("nux")) && TUT.equals("chrome")) {
-			System.setProperty("driver.chrome.driver", "/home/ubuntu/SUT/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "/home/ubuntu/SUT/chromedriver");
 			driver = new ChromeDriver();
 			System.err.println(os);
 		}
 		else if((os.contains("nix") || os.contains("aix") || os.contains("nux")) && TUT.equals("firefox")) {
-			System.setProperty("driver.gecko.driver", "/home/ubuntu/SUT/geckodriver");
+			System.setProperty("webdriver.gecko.driver", "/home/ubuntu/SUT/geckodriver");
 			driver = new FirefoxDriver();
 			System.err.println(os);
 		}
@@ -70,10 +70,10 @@ public class MiniProjetPipiliniTest {
 		WebElement buttonSeConnecter = driver.findElement(By.className("sq-btn"));
 		homePage = pageConnect.connection(userInput, pwdInput, buttonSeConnecter, user, pwd);
 
-		//On vérifie qu'on se situe bien sur la page d'accueil
+		//On vÃ©rifie qu'on se situe bien sur la page d'accueil
 		//assertTrue(homePage.getMessageHome().getText().equals("HOME"));
 
-		//Aller dans l'Espace Cas de test et sélectionner un projet dans l'arbre des cas de test.
+		//Aller dans l'Espace Cas de test et sÃ©lectionner un projet dans l'arbre des cas de test.
 		PageCasDeTest pageCasdT = new PageCasDeTest(driver);
 		pageCasdT = homePage.accesPageCdT();
 		Thread.sleep(6000);
@@ -85,7 +85,7 @@ public class MiniProjetPipiliniTest {
 		WebElement ajouterCdT = driver.findElement(By.id("new-test-case-tree-button"));
 		pageCasdT.ajouterCasDeTest(buttonPlusse, ajouterCdT);
 
-		//Vérification des champs
+		//VÃ©rification des champs
 		WebElement titre = driver.findElement(By.id("ui-id-17"));
 		WebElement fermerPop = driver.findElement(By.xpath("//span[@id='ui-id-17']/following-sibling::a[@class='ui-dialog-titlebar-close ui-corner-all']"));
 		WebElement fermerPopButtopn = driver.findElement(By.xpath("/html/body/div[13]/div[3]/div/input[3]"));
