@@ -39,12 +39,12 @@ public class MiniProjetPipiliniTest {
 		}
 
 		else if ((os.contains("nix") || os.contains("aix") || os.contains("nux")) && TUT.equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver", "/home/ubuntu/SUT/chromedriver");
+			System.setProperty("driver.chrome.driver", "/home/ubuntu/SUT/chromedriver");
 			driver = new ChromeDriver();
 			System.err.println(os);
 		}
 		else if((os.contains("nix") || os.contains("aix") || os.contains("nux")) && TUT.equals("firefox")) {
-			System.setProperty("webdriver.gecko.driver", "/home/ubuntu/SUT/geckodriver");
+			System.setProperty("driver.gecko.driver", "/home/ubuntu/SUT/geckodriver");
 			driver = new FirefoxDriver();
 			System.err.println(os);
 		}
